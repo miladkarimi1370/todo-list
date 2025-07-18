@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list project</title>
+    <link rel="stylesheet" href="style/output.css">
+    <link rel="stylesheet" href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css">
+    <script type="text/javascript"
+        src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
+
+</head>
+
+<body class="relative overflow-x-hidden" onload="everyWorkOnLoadingWebpageForTheFirstTime()">
+    <div
+        class="mainApp blur-2xl row justify-center pt-20 bg-gradient-to-r from-[#D9D9D9] to-[#00D0FF] relative w-full min-h-[100vh]">
+        <div class="w-full h-full row justify-center items-center">
+            <button
+            
+                class="bg-stone-950 text-white p-3 rounded-2xl hover:opacity-75 flex w-40 justify-center items-center cursor-pointer h-10  right-10 top-10 absolute"
+                onclick="clearAllProgram()">پاک
+                کردن کل برنامه</button>
+
+            <section class="row justify-center w-8/12  h-full">
+                <div class="row *:w-full  *:h-12 *:py-2 flex justify-start px-10 items-center">
+                    <h5 class="text-lg date">تاریخ : <span class="text-stone-600"></span>
+                    </h5>
+                    <h5 class="text-lg time ">ساعت : <span class="text-stone-600"></span></h5>
+                    <div>
+                        <h2 class="text-center text-2xl font-bold italic text-amber-700 fullName">
+                        </h2>
+                    </div>
+                </div>
+                <form class="w-10/12 ">
+                    <label for="task" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">اضافه
+                        کن</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6 text-stone-300">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+                        </div>
+                        <input type="task" id="task" autocomplete="off"
+                            class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="لطفا یک مورد به برنامه اضافه کنید" required />
+
+                        <div class="start-time absolute end-64 h-full flex items-center justify-center top-0 ">
+
+                            <input data-jdp data-jdp-only-time type="text"
+                                class="form-control h-full text-center text-white text-sm" required
+                                placeholder="ساعت شروع کار" />
+                        </div>
+                        <div class="end-time absolute end-32 h-full flex items-center justify-center top-0 ">
+
+                            <input data-jdp data-jdp-only-time type="text"
+                                class="form-control h-full text-center text-white text-sm" required
+                                placeholder="ساعت پایان کار" />
+                        </div>
+                        <button type="submit" onclick="addTask(event)"
+                            class="addedTaskButton  text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">اضافه
+                            کن</button>
+                    </div>
+
+
+                </form>
+
+            </section>
+            <section class="row justify-center w-10/12 h-full">
+                <div class="oneInstanceOfTask w-10/12 h-20 ">
+
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="popUp absolute duration-1000 top-0 w-full h-[100vh]  row justify-center items-center">
+        <div class=" w-6/12 h-[50%] flex justify-center items-center ">
+            <div class="w-full max-w-xl">
+                <form class="bg-white rounded-3xl shadow-2xl px-8 pt-6 pb-8 mb-4">
+                    <h2 class="text-center text-green-800 font-bold text-xl py-2">برای شروع برنامه لطفا نام و نام
+                        خانوادگی
+                        خودر را وارد نمائید </h2>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="firstName">
+                            نام :
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="firstName" type="text" placeholder="میلاد" required autocomplete="off">
+                        <p class="text-red-500 text-xs py-2 hidden">لطفا نام خود را وارد نمائید !!</p>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="lastName">
+                            نام خانوادگی :
+                        </label>
+                        <input
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="lastName" type="text" placeholder="کریمی" required autocomplete="off">
+                        <p class="text-red-500 text-xs py-2 hidden">لطفا نام خانوادگی خود را وارد نمائید !!</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <button
+                            class="buttonForGetFullName bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            type="button">
+                            شروع برنامه
+                        </button>
+
+                    </div>
+                </form>
+                <p class="text-center text-gray-500 text-xs">
+                    &copy;2025 Acme Corp. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
+<script src="js/js.js"></script>
+
+</html>
